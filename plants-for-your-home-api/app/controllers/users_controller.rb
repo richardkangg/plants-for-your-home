@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 
     def show
         user = User.find(params[:id])
-        render json: { status: 200, user: user }
+        user_plants = Plant.where(user_id: user.id)
+        render json: { status: 200, user: user, plants: user_plants }
     end
 
     def create

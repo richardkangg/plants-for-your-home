@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Form from './Form'
 import { api } from '../services/ApiConfig';
 
-export default class Add extends Component {
+class Add extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -12,8 +12,8 @@ export default class Add extends Component {
     }
 
     componentDidMount() {
-        this.setState({errorMsg: ''})
-      }
+        this.setState({ errorMsg: '' })
+    }
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -22,7 +22,7 @@ export default class Add extends Component {
             name
         }
         api.post('/users', data)
-            .then((res) => res.status === 201 ? this.props.history.push('/users') : null)
+            .then((res) => res.status === 201 ? this.props.history.push('/plants') : null)
             .then(console.log('Created!'))
             .catch(() => this.setState({ errorMsg: 'There was an error!' }))
     }
@@ -32,17 +32,19 @@ export default class Add extends Component {
         const { name } = this.state
         return (
             <div className="add">
-            <div className="addForm">
-                <Form
-                    formData={{ name }}
-                    onChange={this.handleChange}
-                    onSubmit={this.handleSubmit}
-                />
-                {this.state.errorMsg ? (
-                    <p className="error-text">{this.state.errorMsg}</p>
-                ) : null}
-            </div>
+                <div className="addForm">
+                    <Form
+                        formData={{ name }}
+                        onChange={this.handleChange}
+                        onSubmit={this.handleSubmit}
+                    />
+                    {this.state.errorMsg ? (
+                        <p className="error-text">{this.state.errorMsg}</p>
+                    ) : null}
+                </div>
             </div>
         )
     }
 }
+
+export default Add
