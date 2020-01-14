@@ -22,7 +22,7 @@ class Add extends Component {
             name
         }
         api.post('/users', data)
-            .then((res) => res.status === 201 ? this.props.history.push('/plants') : null)
+            .then((res) => res.status === 201 ? this.props.history.push(`/plants/${res.data.id}`) : null)
             .then(console.log('Created!'))
             .catch(() => this.setState({ errorMsg: 'There was an error!' }))
     }

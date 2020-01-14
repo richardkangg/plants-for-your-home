@@ -11,7 +11,7 @@ class PlantsController < ApplicationController
     def create
         @plant = Plant.new(plant_params)
         if @plant.save
-            render json: @plant, status:created, location: @plant
+            render json: @plant, status: 201, location: @plant
         else
             render json: @plant.errors
         end
@@ -24,7 +24,7 @@ class PlantsController < ApplicationController
     end
 
     def plant_params
-        params.require(:plant).permit(:stage, :kind, :image)
+        params.require(:plant).permit(:stage, :kind, :image, :user_id)
     end
 
     def destroy
