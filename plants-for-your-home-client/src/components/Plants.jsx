@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./styles/Plants.css"
 import { api } from '../services/ApiConfig';
+import Navigation from './Navigation'
 
 class Plants extends Component {
     constructor(props) {
@@ -45,7 +46,7 @@ class Plants extends Component {
             user_id: params.id
         }
         api.post('/plants', data)
-        .catch(() => this.setState({ errorMsg: 'There was an error!' }))
+            .catch(() => this.setState({ errorMsg: 'There was an error!' }))
         this.getPlants()
     }
 
@@ -73,8 +74,9 @@ class Plants extends Component {
     render() {
         return (
             <div>
+                <Navigation />
                 <h1>Hello Plant World</h1>
-                
+
                 <div>{this.renderPlants()}</div>
                 <div className="shelves">{this.renderShelf()}</div>
                 <h2>{this.state.name}'s Plants</h2>

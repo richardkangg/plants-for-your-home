@@ -1,8 +1,7 @@
 import React from 'react';
-// import './styles/View.css';
+import './styles/View.css';
 import { api } from '../services/ApiConfig';
-
-export let currentRecipe = '';
+import Navigation from './Navigation'
 
 export default class View extends React.Component {
     constructor() {
@@ -46,6 +45,7 @@ export default class View extends React.Component {
     render() {
         return (
             <div className="viewAll">
+                <Navigation />
                 <div className="usersList">
                     {this.renderUsers()}
                 </div>

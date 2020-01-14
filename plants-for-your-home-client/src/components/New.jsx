@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Form from './Form'
 import { api } from '../services/ApiConfig';
+import Navigation from './Navigation'
 
 class Add extends Component {
     constructor(props) {
@@ -32,6 +33,7 @@ class Add extends Component {
         const { name } = this.state
         return (
             <div className="add">
+                <Navigation />
                 <div className="addForm">
                     <Form
                         formData={{ name }}

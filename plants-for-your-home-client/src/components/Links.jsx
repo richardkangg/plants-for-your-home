@@ -1,12 +1,14 @@
 import React from 'react';
-// import './styles/Links.css';
+import './styles/Links.css';
+import Navigation from './Navigation'
 
 function Links() {
     return (
-        <div className="home-container">
-                <div className="main">
-                    <h1>PLANTS FOR YOUR HOME</h1>
-                </div>
+        <div className="container">
+            <Navigation />
+            <div className="main">
+                <h1>Links</h1>
+            </div>
         </div>
     );
 }

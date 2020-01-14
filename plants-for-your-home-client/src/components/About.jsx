@@ -1,12 +1,14 @@
 import React from 'react';
-// import './styles/About.css';
+import './styles/About.css';
+import Navigation from './Navigation'
 
 function About() {
     return (
-        <div className="home-container">
-                <div className="main">
-                    <h1>PLANTS FOR YOUR HOME</h1>
-                </div>
+        <div className="container">
+            <Navigation />
+            <div className="main">
+                <h1>About</h1>
+            </div>
         </div>
     );
 }
