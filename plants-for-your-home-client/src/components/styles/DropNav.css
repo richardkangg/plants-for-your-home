@@ -1,0 +1,22 @@
+.links-container {
+    border: 2px solid brown;
+    background-color: rgba(136, 195, 153, .5);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    font-size: 40px;
+    height: 100vh;
+}
+
+.links-container .links {
+    border: 2px solid red;
+    padding: 20px 50px 20px 50px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.links-container .x {
+    color: white;
+    text-align: center;
+}

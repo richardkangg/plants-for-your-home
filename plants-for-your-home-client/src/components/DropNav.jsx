@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './styles/Navigation.css';
+import './styles/DropNav.css';
 
-function Navigation() {
+function DropNav() {
     return (
         <div className="links-container">
                     <NavLink exact className="links" activeClassName="active" to="/">
@@ -20,8 +20,9 @@ function Navigation() {
                     <NavLink exact to="/links" className="links" activeClassName="active">
                         Links
                     </NavLink>
+                    <div className="x">x</div>
         </div>
     );
 }
 
-export default Navigation;
+export default DropNav;

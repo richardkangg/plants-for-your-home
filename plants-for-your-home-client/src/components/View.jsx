@@ -32,7 +32,7 @@ export default class View extends React.Component {
         if (this.state.users.length) {
             return this.state.users.map((user) => (
                 <div key={user.id} className="user" onClick={() => history.push(`/plants/${user.id}`)} >
-                    <img className="image" src="https://i.imgur.com/dcmluDS.jpg" />
+                    <img className="image" alt={`${user.name} Plants`} src="https://i.imgur.com/dcmluDS.jpg" />
                     <h2 className="name">{user.name}'s Plants</h2>
                 </div>
             ))
