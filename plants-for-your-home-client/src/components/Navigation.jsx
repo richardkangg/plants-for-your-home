@@ -5,6 +5,7 @@ import './styles/Navigation.css';
 function Navigation() {
     return (
         <div className="links-container">
+            <a href="/"><h1>PLANTS FOR YOUR HOME</h1></a>
                     <NavLink exact className="links" activeClassName="active" to="/">
                         Home
                     </NavLink>

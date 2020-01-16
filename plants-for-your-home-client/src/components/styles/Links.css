@@ -1,4 +1,18 @@
-.container {
-    border: 2px solid red;
+.link-container {
     display: flex;
+}
+
+.link-container .main {
+    display: flex;
+    flex-direction: column;
+    padding: 70px;
+    width: 100%;
+}
+
+.link-container .main h1 {
+    font-size: 70px;
+}
+
+.link-container .main p {
+    font-size: 30px;
 }

@@ -29,7 +29,8 @@ class Plants extends Component {
             plantToDelete: {},
             toDelete: false,
             toAdd: false,
-            toUpdate: false
+            toUpdate: false,
+            nav: false,
         }
     }
 
@@ -122,6 +123,10 @@ class Plants extends Component {
             this.setState({ toUpdate: true, plantToUpdate: plant, toDelete: true, plantToDelete: { shelf_id: id } })
         }
 
+        else if (plant.stage === 'single') {
+            this.setState({ toUpdate: true, plantToUpdate: plant, toDelete: true, plantToDelete: { shelf_id: id } })
+        }
+
         else if (plant.stage === 'full') {
             this.setState({ toUpdate: true, plantToUpdate: plant, toDelete: true, plantToDelete: { shelf_id: id } })
         }
@@ -140,12 +145,12 @@ class Plants extends Component {
             .catch(err => console.error(err))
     }
 
-    handleSeedPlant = () => {
+    handleSeedPlant = (type, img) => {
         let plantData = {
             id: this.state.plantToUpdate.id,
             stage: 'seed',
-            kind: 'brown',
-            image: 'redbrown.png',
+            kind: type,
+            image: img,
             user_id: this.state.plantToUpdate.user_id,
             shelf_id: this.state.plantToUpdate.shelf_id
         }
@@ -159,12 +164,12 @@ class Plants extends Component {
             .catch(err => console.error(err))
     }
 
-    handleGrowPlant = () => {
+    handleGrowPlant = (type, img) => {
         let plantData = {
             id: this.state.plantToUpdate.id,
             stage: 'grow',
-            kind: 'brown',
-            image: 'redgrowth.png',
+            kind: type,
+            image: img,
             user_id: this.state.plantToUpdate.user_id,
             shelf_id: this.state.plantToUpdate.shelf_id
         }
@@ -178,12 +183,12 @@ class Plants extends Component {
             .catch(err => console.error(err))
     }
 
-    handleFullPlant = () => {
+    handleFullPlant = (img, full) => {
         let plantData = {
             id: this.state.plantToUpdate.id,
-            stage: 'full',
-            kind: 'brown',
-            image: 'reddaisy.png',
+            stage: full,
+            kind: this.state.plantToUpdate.kind,
+            image: img,
             user_id: this.state.plantToUpdate.user_id,
             shelf_id: this.state.plantToUpdate.shelf_id
         }
@@ -197,11 +202,30 @@ class Plants extends Component {
             .catch(err => console.error(err))
     }
 
-    handleAddPlant = () => {
+    handleMoreDaisies = (img, full) => {
+        let plantData = {
+            id: this.state.plantToUpdate.id,
+            stage: full,
+            kind: this.state.plantToUpdate.kind,
+            image: img,
+            user_id: this.state.plantToUpdate.user_id,
+            shelf_id: this.state.plantToUpdate.shelf_id
+        }
+        console.log(plantData)
+        console.log(plantData.shelf_id)
+        this.editPlant(plantData.id, plantData)
+            .then(() => {
+                this.getPlants()
+            })
+            .then(() => this.handleCloseModal())
+            .catch(err => console.error(err))
+    }
+
+    handleAddPlant = (color, img) => {
         let plantData = {
             "stage": 'pot',
-            "kind": 'red',
-            "image": 'potred.png',
+            "kind": color,
+            "image": img,
             "user_id": this.state.user_id,
             "shelf_id": this.state.plantToAdd.shelf_id
         }
@@ -220,14 +244,15 @@ class Plants extends Component {
     renderDeleteConfirmModal = () => {
         if (this.state.toUpdate) {
 
-            if (this.state.plantToUpdate.stage === 'pot') {
+            if (this.state.plantToUpdate.stage === 'pot' && this.state.plantToUpdate.kind === 'red') {
                 return (
                     <div className="modal open">
-                        <h4>What do you want to do?</h4>
+                        <h4>Add a seed!</h4>
                         <div className="buttons">
-                            <button onClick={this.handleSeedPlant}>
-                                Add Seed
-                            </button>
+                            <div className="icons">
+                            <img src={require('../images/seedbrown.png')} alt="daisy seed" onClick={() => this.handleSeedPlant('daisy', 'redbrown.png')} />
+                            <img src={require('../images/seedblue.png')} alt="grass seed" onClick={() => this.handleSeedPlant('grass', 'redblue.png')} />
+                            </div>
                             <button
                                 color="danger"
                                 title="Delete"
@@ -241,12 +266,56 @@ class Plants extends Component {
                 )
             }
 
-            else if (this.state.plantToUpdate.stage === 'seed') {
+            if (this.state.plantToUpdate.stage === 'pot' && this.state.plantToUpdate.kind === 'brown') {
+                return (
+                    <div className="modal open">
+                        <h4>Add a seed!</h4>
+                        <div className="buttons">
+                            <div className="icons">
+                            <img src={require('../images/seedbrown.png')} alt="daisy seed" onClick={() => this.handleSeedPlant('daisy', 'brownbrown.png')} />
+                            <img src={require('../images/seedblue.png')} alt="grass seed" onClick={() => this.handleSeedPlant('grass', 'brownblue.png')} />
+                            </div>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
+
+            if (this.state.plantToUpdate.stage === 'pot' && this.state.plantToUpdate.kind === 'gray') {
+                return (
+                    <div className="modal open">
+                        <h4>Add a seed!</h4>
+                        <div className="buttons">
+                            <div className="icons">
+                            <img src={require('../images/seedbrown.png')} alt="daisy seed" onClick={() => this.handleSeedPlant('daisy', 'graybrown.png')} />
+                            <img src={require('../images/seedblue.png')} alt="grass seed" onClick={() => this.handleSeedPlant('grass', 'grayblue.png')} />
+                            </div>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
+
+            else if (this.state.plantToUpdate.stage === 'seed' && this.state.plantToUpdate.image === 'redbrown.png') {
                 return (
                     <div className="modal open">
                         <h4>What do you want to do?</h4>
                         <div className="buttons">
-                            <button onClick={this.handleGrowPlant}>
+                            <button onClick={() => this.handleGrowPlant('red_daisy', 'redgrowth.png')}>
                                 Water your seed!
                             </button>
                             <button
@@ -261,46 +330,320 @@ class Plants extends Component {
                     </div>
                 )
             }
-        
 
-        else if (this.state.plantToUpdate.stage === 'grow') {
-            return (
-                <div className="modal open">
-                    <h4>What do you want to do?</h4>
-                    <div className="buttons">
-                        <button onClick={this.handleFullPlant}>
-                            Water your plant!
+            else if (this.state.plantToUpdate.stage === 'seed' && this.state.plantToUpdate.image === 'redblue.png') {
+                return (
+                    <div className="modal open">
+                        <h4>What do you want to do?</h4>
+                        <div className="buttons">
+                            <button onClick={() => this.handleGrowPlant('red_grass', 'redgrowth.png')}>
+                                Water your seed!
+                            </button>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
+
+            else if (this.state.plantToUpdate.stage === 'seed' && this.state.plantToUpdate.image === 'brownbrown.png') {
+                return (
+                    <div className="modal open">
+                        <h4>What do you want to do?</h4>
+                        <div className="buttons">
+                            <button onClick={() => this.handleGrowPlant('brown_daisy', 'browngrowth.png')}>
+                                Water your seed!
+                            </button>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
+
+            else if (this.state.plantToUpdate.stage === 'seed' && this.state.plantToUpdate.image === 'brownblue.png') {
+                return (
+                    <div className="modal open">
+                        <h4>What do you want to do?</h4>
+                        <div className="buttons">
+                            <button onClick={() => this.handleGrowPlant('brown_grass', 'browngrowth.png')}>
+                                Water your seed!
+                            </button>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
+
+            else if (this.state.plantToUpdate.stage === 'seed' && this.state.plantToUpdate.image === 'graybrown.png') {
+                return (
+                    <div className="modal open">
+                        <h4>What do you want to do?</h4>
+                        <div className="buttons">
+                            <button onClick={() => this.handleGrowPlant('gray_daisy', 'graygrowth.png')}>
+                                Water your seed!
+                            </button>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
+
+            else if (this.state.plantToUpdate.stage === 'seed' && this.state.plantToUpdate.image === 'grayblue.png') {
+                return (
+                    <div className="modal open">
+                        <h4>What do you want to do?</h4>
+                        <div className="buttons">
+                            <button onClick={() => this.handleGrowPlant('gray_blue', 'graygrowth.png')}>
+                                Water your seed!
+                            </button>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
+
+
+            else if (this.state.plantToUpdate.stage === 'grow' && this.state.plantToUpdate.kind === 'red_daisy') {
+                return (
+                    <div className="modal open">
+                        <h4>What do you want to do?</h4>
+                        <div className="buttons">
+                            <button onClick={() => this.handleFullPlant('reddaisy.png', 'single')}>
+                                Water your plant!
                         </button>
-                        <button
-                            color="danger"
-                            title="Delete"
-                            onClick={this.handleDeletePlant}
-                        >Delete</button>
-                        <button
-                            onClick={this.handleCloseModal}
-                        >Cancel</button>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
                     </div>
-                </div>
-            )
-        }
-        else if (this.state.plantToUpdate.stage === 'full') {
-            return (
-                <div className="modal open">
-                    <h4>Delete your plant?</h4>
-                    <div className="buttons">
-                        <button
-                            color="danger"
-                            title="Delete"
-                            onClick={this.handleDeletePlant}
-                        >Delete</button>
-                        <button
-                            onClick={this.handleCloseModal}
-                        >Cancel</button>
+                )
+            }
+
+            else if (this.state.plantToUpdate.stage === 'grow' && this.state.plantToUpdate.kind === 'red_grass') {
+                return (
+                    <div className="modal open">
+                        <h4>What do you want to do?</h4>
+                        <div className="buttons">
+                            <button onClick={() => this.handleFullPlant('redgrass.png')}>
+                                Water your plant!
+                        </button>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
                     </div>
-                </div>
-            )
+                )
+            }
+
+            else if (this.state.plantToUpdate.stage === 'grow' && this.state.plantToUpdate.kind === 'brown_daisy') {
+                return (
+                    <div className="modal open">
+                        <h4>What do you want to do?</h4>
+                        <div className="buttons">
+                            <button onClick={() => this.handleFullPlant('browndaisy.png', 'single')}>
+                                Water your plant!
+                        </button>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
+
+            else if (this.state.plantToUpdate.stage === 'grow' && this.state.plantToUpdate.kind === 'brown_grass') {
+                return (
+                    <div className="modal open">
+                        <h4>What do you want to do?</h4>
+                        <div className="buttons">
+                            <button onClick={() => this.handleFullPlant('browngrass.png')}>
+                                Water your plant!
+                        </button>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
+
+            else if (this.state.plantToUpdate.stage === 'grow' && this.state.plantToUpdate.kind === 'gray_daisy') {
+                return (
+                    <div className="modal open">
+                        <h4>What do you want to do?</h4>
+                        <div className="buttons">
+                            <button onClick={() => this.handleFullPlant('graydaisy.png', 'single')}>
+                                Water your plant!
+                        </button>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
+
+            else if (this.state.plantToUpdate.stage === 'grow' && this.state.plantToUpdate.kind === 'gray_grass') {
+                return (
+                    <div className="modal open">
+                        <h4>What do you want to do?</h4>
+                        <div className="buttons">
+                            <button onClick={() => this.handleFullPlant('graygrass.png')}>
+                                Water your plant!
+                        </button>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
+
+            else if (this.state.plantToUpdate.stage === 'single' && this.state.plantToUpdate.kind === 'red_daisy') {
+                return (
+                    <div className="modal open">
+                        <h4>What do you want to do?</h4>
+                        <div className="buttons">
+                            <button onClick={() => this.handleMoreDaisies('reddaisies.png', 'full')}>
+                                Water your plant some more!
+                        </button>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
+
+            else if (this.state.plantToUpdate.stage === 'single' && this.state.plantToUpdate.kind === 'brown_daisy') {
+                return (
+                    <div className="modal open">
+                        <h4>What do you want to do?</h4>
+                        <div className="buttons">
+                            <button onClick={() => this.handleMoreDaisies('browndaisies.png', 'full')}>
+                                Water your plant some more!
+                        </button>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
+
+            else if (this.state.plantToUpdate.stage === 'single' && this.state.plantToUpdate.kind === 'gray_daisy') {
+                return (
+                    <div className="modal open">
+                        <h4>What do you want to do?</h4>
+                        <div className="buttons">
+                            <button onClick={() => this.handleMoreDaisies('graydaisies.png', 'full')}>
+                                Water your plant some more!
+                        </button>
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
+
+            else if (this.state.plantToUpdate.stage === 'full') {
+                return (
+                    <div className="modal open">
+                        <h4>Delete your plant?</h4>
+                        <div className="buttons">
+                            <button
+                                color="danger"
+                                title="Delete"
+                                onClick={this.handleDeletePlant}
+                            >Delete</button>
+                            <button
+                                onClick={this.handleCloseModal}
+                            >Cancel</button>
+                        </div>
+                    </div>
+                )
+            }
         }
-    }
 
         else if (this.state.toAdd) {
             console.log('Add modal is open.')
@@ -308,9 +651,11 @@ class Plants extends Component {
                 <div className="modal open">
                     <h4>Add a pot!</h4>
                     <div className="buttons">
-                        <button onClick={this.handleAddPlant}>
-                            Add Pot
-                        </button>
+                    <div className="icons">
+                            <img src={require('../images/potred.png')} alt="red pot" onClick={() => this.handleAddPlant('red', 'potred.png')} />
+                            <img src={require('../images/potbrown.png')} alt="blue pot" onClick={() => this.handleAddPlant('brown', 'potbrown.png')} />
+                            <img src={require('../images/potgray.png')} alt="gray pot" onClick={() => this.handleAddPlant('gray', 'potgray.png')} />
+                            </div>
                         <button
                             onClick={this.handleCloseModal}
                         >Cancel</button>
@@ -322,6 +667,41 @@ class Plants extends Component {
 
         else {
             return <div className="modal close" />
+        }
+    }
+
+    toggleNav = () => {
+        if (this.state.nav) {
+        this.setState({ nav: false, toAdd: false, toDelete: false, toUpdate: false })
+        } else {this.setState({nav: true, toAdd: false, toUpdate: false, toDelete: false })}
+    }
+
+    renderNavBar = () => {
+        if (this.state.nav) {
+            return (
+                <div className="navBar">
+                <DropNav />
+                </div>
+                )
+        }
+
+        else {
+            return <div className="modal close" />
+        }
+    }
+
+    renderInstructions = () => {
+        if (this.state.nav || this.state.toAdd || this.state.toUpdate || this.state.toDelete) {
+            return (
+                <div className="modal close">
+                </div>
+                )
+        }
+
+        else {
+            return <div className="instructions">
+                <h3>Click on an empty shelf space or a pot to make changes to your plants!</h3>
+                </div>
         }
     }
 
@@ -437,8 +817,13 @@ class Plants extends Component {
 
         return (
             <div className="plants-container">
-                <DropNav />
+                <div className="sideBar">
+                    <a href="/"><h1>PLANTS FOR YOUR HOME</h1></a>
+                {this.renderNavBar()}
+                <img className="x" src={require('../images/menubar.png')} onClick={() => this.toggleNav()} />
                 {this.renderDeleteConfirmModal()}
+                {this.renderInstructions()}
+                </div>
                 <div className="plants">
                     <div className="top">
                         <div className="each" onClick={() => this.handleOpenModal(1)}>

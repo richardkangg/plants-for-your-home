@@ -20,7 +20,6 @@ function DropNav() {
                     <NavLink exact to="/links" className="links" activeClassName="active">
                         Links
                     </NavLink>
-                    <div className="x">x</div>
         </div>
     );
 }

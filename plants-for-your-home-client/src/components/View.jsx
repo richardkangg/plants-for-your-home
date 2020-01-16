@@ -8,11 +8,13 @@ export default class View extends React.Component {
         super()
         this.state = {
             users: [],
+            plants: []
         }
     }
 
     componentDidMount() {
         this.fetchUsers()
+        this.fetchPlants()
     }
 
     fetchUsers = async () => {
@@ -25,17 +27,31 @@ export default class View extends React.Component {
         }
     }
 
+    fetchPlants = async () => {
+        try {
+            const plants = await api.get('/plants')
+            this.setState({ plants: plants.data.plants })
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     renderUsers = () => {
         const {
             history
         } = this.props
         if (this.state.users.length) {
-            return this.state.users.map((user) => (
+            return this.state.users.map((user) => {
+                let plant = this.state.plants.find(x => x.user_id === user.id);
+                if (typeof plant === 'undefined') {
+                    plant = {image: 'potbrown.png'}
+                }
+                return (
                 <div key={user.id} className="user" onClick={() => history.push(`/plants/${user.id}`)} >
-                    <img className="image" alt={`${user.name} Plants`} src="https://i.imgur.com/dcmluDS.jpg" />
+                    <img className="image" alt={`${user.name} Plants`} src={require(`../images/${plant.image}`)} />
                     <h2 className="name">{user.name}'s Plants</h2>
                 </div>
-            ))
+            )})
         }
     }
 

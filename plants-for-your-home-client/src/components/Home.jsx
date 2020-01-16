@@ -11,6 +11,7 @@ function Home() {
                     <a href="/about"><img alt="about" src={require('../images/about.png')} /></a>
                     <a href="/links"><img alt="links" src={require('../images/links.png')} /></a>
                 </div>
+                <img className="fullShelf" src={require('../images/shelf/fullshelf.png')}/>
         </div>
     );
 }

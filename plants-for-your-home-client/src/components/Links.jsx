@@ -4,10 +4,11 @@ import Navigation from './Navigation'
 
 function Links() {
     return (
-        <div className="container">
+        <div className="link-container">
             <Navigation />
             <div className="main">
                 <h1>Links</h1>
+                <p>Just kidding, I have no social media.</p>
             </div>
         </div>
     );
