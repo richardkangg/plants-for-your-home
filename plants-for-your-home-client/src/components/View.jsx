@@ -27,16 +27,13 @@ export default class View extends React.Component {
 
     renderUsers = () => {
         const {
-            // match: { path },
             history
         } = this.props
         if (this.state.users.length) {
             return this.state.users.map((user) => (
-                <div key={user.id} className="userPreview" onClick={() => history.push(`/plants/${user.id}`)} >
-                    <img className="previewPic" src="" />
-                    <div className="previewBar">
-                        <h2 className="previewName">{user.name}</h2>
-                    </div>
+                <div key={user.id} className="user" onClick={() => history.push(`/plants/${user.id}`)} >
+                    <img className="image" src="https://i.imgur.com/dcmluDS.jpg" />
+                    <h2 className="name">{user.name}'s Plants</h2>
                 </div>
             ))
         }
@@ -46,7 +43,7 @@ export default class View extends React.Component {
         return (
             <div className="viewAll">
                 <Navigation />
-                <div className="usersList">
+                <div className="users">
                     {this.renderUsers()}
                 </div>
             </div>

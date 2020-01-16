@@ -1,0 +1,10 @@
+.new-container {
+    border: 2px solid red;
+    display: flex;
+}
+
+.new-container .addForm {
+    display: flex;
+    border: 2px solid green;
+    margin: auto;
+}

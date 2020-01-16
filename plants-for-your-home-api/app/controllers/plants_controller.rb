@@ -24,7 +24,7 @@ class PlantsController < ApplicationController
     end
 
     def plant_params
-        params.require(:plant).permit(:stage, :kind, :image, :user_id)
+        params.require(:plant).permit(:stage, :kind, :image, :shelf_id, :user_id)
     end
 
     def destroy

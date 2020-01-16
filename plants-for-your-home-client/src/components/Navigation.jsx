@@ -1,29 +1,25 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import './styles/Navigation.css';
 
 function Navigation() {
     return (
-        <div className="links">
-            <nav>
-                <div className="linkBox">
-                    <NavLink exact activeClassName="active" to="/">
+        <div className="links-container">
+                    <NavLink exact className="links" activeClassName="active" to="/">
                         Home
                     </NavLink>
-                    <NavLink exact activeClassName="active" to="/view">
+                    <NavLink exact className="links" activeClassName="active" to="/view">
                         View
                     </NavLink>
-                    <NavLink exact to="/new" activeClassName="active">
+                    <NavLink exact to="/new" className="links" activeClassName="active">
                         New
                     </NavLink>
-                    <NavLink exact to="/about" activeClassName="active">
+                    <NavLink exact to="/about" className="links" activeClassName="active">
                         About
                     </NavLink>
-                    <NavLink exact to="/links" activeClassName="active">
+                    <NavLink exact to="/links" className="links" activeClassName="active">
                         Links
                     </NavLink>
-                </div>
-            </nav>
         </div>
     );
 }

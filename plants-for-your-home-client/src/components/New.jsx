@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Form from './Form'
 import { api } from '../services/ApiConfig';
 import Navigation from './Navigation'
+import './styles/New.css'
 
 class Add extends Component {
     constructor(props) {
@@ -32,7 +33,7 @@ class Add extends Component {
     render() {
         const { name } = this.state
         return (
-            <div className="add">
+            <div className="new-container">
                 <Navigation />
                 <div className="addForm">
                     <Form

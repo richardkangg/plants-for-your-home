@@ -1,0 +1,34 @@
+body {
+    background-image: url("../../images/background.jpeg");
+    background-position: top;
+    background-size: 150%;
+}
+
+.home-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid red;
+    margin-top: 10vh;
+}
+
+.home-container h1 {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    border: 2px solid blue;
+    font-size: 100px;
+    color: white;
+}
+
+.home-container .links {
+    border: 2px solid green;
+}
+
+.home-container .links a {
+    padding: 20px;
+}
+
+.home-container .links img {
+    width: 100px;
+}

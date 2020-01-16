@@ -1,0 +1,31 @@
+.viewAll {
+    border: 2px solid red;
+    display: flex;
+}
+
+.viewAll .users {
+    border: 2px solid blue;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.viewAll .users .user {
+    border: 5px solid green;
+    padding: 20px;
+}
+
+.viewAll .users .user .image {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+.viewAll .users .user h2 {
+    font-size: 25px;
+    border: 2px solid orange;
+    margin: 0;
+    text-align: center;
+    color: #ECFFFD;
+}
+
