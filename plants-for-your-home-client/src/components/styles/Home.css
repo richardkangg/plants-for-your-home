@@ -43,3 +43,29 @@ a {
     position: relative;
     margin-top: 250px;
 }
+
+@media (max-width: 500px) {
+    body {
+        background-size: auto;
+    }
+
+   .home-container h1 {
+        font-size: 50px;
+    }
+
+    .home-container .fullShelf {
+        display: none;
+    }
+
+    .home-container .links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 0;
+        position: relative;
+    }
+
+    .home-container img {
+        margin: auto;
+    }
+  }

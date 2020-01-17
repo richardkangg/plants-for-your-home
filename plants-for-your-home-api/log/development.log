@@ -15550,3 +15550,661 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.8ms | Allocations: 2077)
 
 
+Started GET "/plants" for ::1 at 2020-01-16 17:09:11 -0500
+Started GET "/users" for ::1 at 2020-01-16 17:09:11 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3:in `index'
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 1.8ms | Allocations: 2435)
+
+
+Processing by PlantsController#index as HTML
+  [1m[36mPlant Load (8.6ms)[0m  [1m[34mSELECT "plants".* FROM "plants"[0m
+  ↳ app/controllers/plants_controller.rb:3:in `index'
+Completed 200 OK in 15ms (Views: 5.8ms | ActiveRecord: 8.6ms | Allocations: 3981)
+
+
+Started GET "/users/5" for ::1 at 2020-01-16 17:09:13 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 8ms (Views: 2.6ms | ActiveRecord: 3.4ms | Allocations: 2003)
+
+
+Started POST "/plants" for ::1 at 2020-01-16 17:09:16 -0500
+Started GET "/users/5" for ::1 at 2020-01-16 17:09:16 -0500
+Processing by PlantsController#create as HTML
+  Parameters: {"stage"=>"pot", "kind"=>"gray", "image"=>"potgray.png", "user_id"=>5, "shelf_id"=>7, "plant"=>{"stage"=>"pot", "kind"=>"gray", "image"=>"potgray.png", "user_id"=>5, "shelf_id"=>7}}
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Create (2.1ms)[0m  [1m[32mINSERT INTO "plants" ("stage", "kind", "image", "user_id", "shelf_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["stage", "pot"], ["kind", "gray"], ["image", "potgray.png"], ["user_id", 5], ["shelf_id", 7]]
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+  [1m[36mPlant Load (0.5ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 10ms (Views: 2.6ms | ActiveRecord: 3.9ms | Allocations: 4496)
+
+
+Started GET "/users/5" for ::1 at 2020-01-16 17:09:16 -0500
+  [1m[35m (4.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+Completed 201 Created in 15ms (Views: 0.4ms | ActiveRecord: 7.2ms | Allocations: 6046)
+
+
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (1.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 9ms (Views: 2.1ms | ActiveRecord: 4.3ms | Allocations: 2257)
+
+
+Started POST "/plants" for ::1 at 2020-01-16 17:09:18 -0500
+Started GET "/users/5" for ::1 at 2020-01-16 17:09:18 -0500
+Processing by PlantsController#create as HTML
+  Parameters: {"stage"=>"pot", "kind"=>"gray", "image"=>"potgray.png", "user_id"=>5, "shelf_id"=>9, "plant"=>{"stage"=>"pot", "kind"=>"gray", "image"=>"potgray.png", "user_id"=>5, "shelf_id"=>9}}
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+  [1m[36mPlant Load (1.0ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 1.5ms | Allocations: 3918)
+
+
+  [1m[36mPlant Create (0.7ms)[0m  [1m[32mINSERT INTO "plants" ("stage", "kind", "image", "user_id", "shelf_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["stage", "pot"], ["kind", "gray"], ["image", "potgray.png"], ["user_id", 5], ["shelf_id", 9]]
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+Started GET "/users/5" for ::1 at 2020-01-16 17:09:18 -0500
+Processing by UsersController#show as HTML
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+  Parameters: {"id"=>"5"}
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+Completed 201 Created in 28ms (Views: 8.8ms | ActiveRecord: 9.4ms | Allocations: 6565)
+
+
+  [1m[36mUser Load (9.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (3.8ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 17ms (Views: 1.9ms | ActiveRecord: 13.3ms | Allocations: 2559)
+
+
+Started POST "/users" for ::1 at 2020-01-17 01:38:18 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"hollly", "user"=>{"name"=>"hollly"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Create (3.9ms)[0m  [1m[32mINSERT INTO "users" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "hollly"]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+Completed 201 Created in 18ms (Views: 1.9ms | ActiveRecord: 4.6ms | Allocations: 2195)
+
+
+Started GET "/users/9" for ::1 at 2020-01-17 01:38:18 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (3.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 14ms (Views: 5.9ms | ActiveRecord: 4.0ms | Allocations: 1524)
+
+
+Started POST "/plants" for ::1 at 2020-01-17 01:38:24 -0500
+Started GET "/users/9" for ::1 at 2020-01-17 01:38:24 -0500
+Processing by PlantsController#create as HTML
+  Parameters: {"stage"=>"pot", "kind"=>"gray", "image"=>"potgray.png", "user_id"=>9, "shelf_id"=>5, "plant"=>{"stage"=>"pot", "kind"=>"gray", "image"=>"potgray.png", "user_id"=>9, "shelf_id"=>5}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+  [1m[36mPlant Create (3.0ms)[0m  [1m[32mINSERT INTO "plants" ("stage", "kind", "image", "user_id", "shelf_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["stage", "pot"], ["kind", "gray"], ["image", "potgray.png"], ["user_id", 9], ["shelf_id", 5]]
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+Completed 201 Created in 14ms (Views: 0.6ms | ActiveRecord: 3.9ms | Allocations: 3863)
+
+
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.5ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 1.0ms | Allocations: 1643)
+
+
+Started GET "/users/9" for ::1 at 2020-01-17 01:38:24 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.7ms | Allocations: 1561)
+
+
+Started POST "/plants" for ::1 at 2020-01-17 01:38:28 -0500
+Started GET "/users/9" for ::1 at 2020-01-17 01:38:28 -0500
+Processing by PlantsController#create as HTML
+  Parameters: {"stage"=>"pot", "kind"=>"brown", "image"=>"potbrown.png", "user_id"=>9, "shelf_id"=>7, "plant"=>{"stage"=>"pot", "kind"=>"brown", "image"=>"potbrown.png", "user_id"=>9, "shelf_id"=>7}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Processing by UsersController#show as HTML
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Create (1.2ms)[0m  [1m[32mINSERT INTO "plants" ("stage", "kind", "image", "user_id", "shelf_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["stage", "pot"], ["kind", "brown"], ["image", "potbrown.png"], ["user_id", 9], ["shelf_id", 7]]
+  [1m[36mPlant Load (0.5ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 9ms (Views: 4.6ms | ActiveRecord: 0.9ms | Allocations: 3184)
+
+
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+Completed 201 Created in 17ms (Views: 0.6ms | ActiveRecord: 4.4ms | Allocations: 5631)
+
+
+Started GET "/users/9" for ::1 at 2020-01-17 01:38:28 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 6ms (Views: 2.0ms | ActiveRecord: 2.2ms | Allocations: 1664)
+
+
+Started PUT "/plants/53" for ::1 at 2020-01-17 01:38:30 -0500
+Processing by PlantsController#update as HTML
+  Parameters: {"id"=>"53", "stage"=>"seed", "kind"=>"daisy", "image"=>"graybrown.png", "user_id"=>9, "shelf_id"=>5, "plant"=>{"id"=>"53", "stage"=>"seed", "kind"=>"daisy", "image"=>"graybrown.png", "user_id"=>9, "shelf_id"=>5}}
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = $1 LIMIT $2[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:21:in `update'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mPlant Update (10.6ms)[0m  [1m[33mUPDATE "plants" SET "stage" = $1, "kind" = $2, "image" = $3 WHERE "plants"."id" = $4[0m  [["stage", "seed"], ["kind", "daisy"], ["image", "graybrown.png"], ["id", 53]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+Completed 200 OK in 24ms (Views: 0.4ms | ActiveRecord: 12.1ms | Allocations: 4085)
+
+
+Started GET "/users/9" for ::1 at 2020-01-17 01:38:31 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.6ms | Allocations: 1664)
+
+
+Started PUT "/plants/54" for ::1 at 2020-01-17 01:38:33 -0500
+Processing by PlantsController#update as HTML
+  Parameters: {"id"=>"54", "stage"=>"seed", "kind"=>"grass", "image"=>"brownblue.png", "user_id"=>9, "shelf_id"=>7, "plant"=>{"id"=>"54", "stage"=>"seed", "kind"=>"grass", "image"=>"brownblue.png", "user_id"=>9, "shelf_id"=>7}}
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:21:in `update'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mPlant Update (0.4ms)[0m  [1m[33mUPDATE "plants" SET "stage" = $1, "kind" = $2, "image" = $3 WHERE "plants"."id" = $4[0m  [["stage", "seed"], ["kind", "grass"], ["image", "brownblue.png"], ["id", 54]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 2.9ms | Allocations: 4082)
+
+
+Started GET "/users/9" for ::1 at 2020-01-17 01:38:33 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.5ms | Allocations: 1664)
+
+
+Started PUT "/plants/54" for ::1 at 2020-01-17 01:38:36 -0500
+Processing by PlantsController#update as HTML
+  Parameters: {"id"=>"54", "stage"=>"grow", "kind"=>"brown_grass", "image"=>"browngrowth.png", "user_id"=>9, "shelf_id"=>7, "plant"=>{"id"=>"54", "stage"=>"grow", "kind"=>"brown_grass", "image"=>"browngrowth.png", "user_id"=>9, "shelf_id"=>7}}
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:21:in `update'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mPlant Update (0.4ms)[0m  [1m[33mUPDATE "plants" SET "stage" = $1, "kind" = $2, "image" = $3 WHERE "plants"."id" = $4[0m  [["stage", "grow"], ["kind", "brown_grass"], ["image", "browngrowth.png"], ["id", 54]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 4082)
+
+
+Started GET "/users/9" for ::1 at 2020-01-17 01:38:36 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.8ms | Allocations: 1664)
+
+
+Started PUT "/plants/54" for ::1 at 2020-01-17 01:38:39 -0500
+Processing by PlantsController#update as HTML
+  Parameters: {"id"=>"54", "kind"=>"brown_grass", "image"=>"browngrass.png", "user_id"=>9, "shelf_id"=>7, "plant"=>{"id"=>"54", "kind"=>"brown_grass", "image"=>"browngrass.png", "user_id"=>9, "shelf_id"=>7}}
+  [1m[36mPlant Load (0.6ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:21:in `update'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mPlant Update (0.4ms)[0m  [1m[33mUPDATE "plants" SET "image" = $1 WHERE "plants"."id" = $2[0m  [["image", "browngrass.png"], ["id", 54]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 1.9ms | Allocations: 4041)
+
+
+Started GET "/users/9" for ::1 at 2020-01-17 01:38:39 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 0.8ms | Allocations: 1664)
+
+
+Started PUT "/plants/53" for ::1 at 2020-01-17 01:38:42 -0500
+Processing by PlantsController#update as HTML
+  Parameters: {"id"=>"53", "stage"=>"grow", "kind"=>"gray_daisy", "image"=>"graygrowth.png", "user_id"=>9, "shelf_id"=>5, "plant"=>{"id"=>"53", "stage"=>"grow", "kind"=>"gray_daisy", "image"=>"graygrowth.png", "user_id"=>9, "shelf_id"=>5}}
+  [1m[36mPlant Load (0.7ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = $1 LIMIT $2[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:21:in `update'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mPlant Update (0.3ms)[0m  [1m[33mUPDATE "plants" SET "stage" = $1, "kind" = $2, "image" = $3 WHERE "plants"."id" = $4[0m  [["stage", "grow"], ["kind", "gray_daisy"], ["image", "graygrowth.png"], ["id", 53]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+Completed 200 OK in 43ms (Views: 0.3ms | ActiveRecord: 6.4ms | Allocations: 4085)
+
+
+Started GET "/users/9" for ::1 at 2020-01-17 01:38:42 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 1664)
+
+
+Started PUT "/plants/53" for ::1 at 2020-01-17 01:38:44 -0500
+Processing by PlantsController#update as HTML
+  Parameters: {"id"=>"53", "stage"=>"single", "kind"=>"gray_daisy", "image"=>"graydaisy.png", "user_id"=>9, "shelf_id"=>5, "plant"=>{"id"=>"53", "stage"=>"single", "kind"=>"gray_daisy", "image"=>"graydaisy.png", "user_id"=>9, "shelf_id"=>5}}
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = $1 LIMIT $2[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:21:in `update'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mPlant Update (0.3ms)[0m  [1m[33mUPDATE "plants" SET "stage" = $1, "image" = $2 WHERE "plants"."id" = $3[0m  [["stage", "single"], ["image", "graydaisy.png"], ["id", 53]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 2.1ms | Allocations: 4068)
+
+
+Started GET "/users/9" for ::1 at 2020-01-17 01:38:44 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 1664)
+
+
+Started PUT "/plants/53" for ::1 at 2020-01-17 01:38:46 -0500
+Processing by PlantsController#update as HTML
+  Parameters: {"id"=>"53", "stage"=>"full", "kind"=>"gray_daisy", "image"=>"graydaisies.png", "user_id"=>9, "shelf_id"=>5, "plant"=>{"id"=>"53", "stage"=>"full", "kind"=>"gray_daisy", "image"=>"graydaisies.png", "user_id"=>9, "shelf_id"=>5}}
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = $1 LIMIT $2[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:21:in `update'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mPlant Update (0.3ms)[0m  [1m[33mUPDATE "plants" SET "stage" = $1, "image" = $2 WHERE "plants"."id" = $3[0m  [["stage", "full"], ["image", "graydaisies.png"], ["id", 53]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 4068)
+
+
+Started GET "/users/9" for ::1 at 2020-01-17 01:38:46 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 1664)
+
+
+Started POST "/plants" for ::1 at 2020-01-17 01:38:51 -0500
+Started GET "/users/9" for ::1 at 2020-01-17 01:38:51 -0500
+Processing by PlantsController#create as HTML
+  Parameters: {"stage"=>"pot", "kind"=>"brown", "image"=>"potbrown.png", "user_id"=>9, "shelf_id"=>10, "plant"=>{"stage"=>"pot", "kind"=>"brown", "image"=>"potbrown.png", "user_id"=>9, "shelf_id"=>10}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.8ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 9]]
+  [1m[36mPlant Create (1.5ms)[0m  [1m[32mINSERT INTO "plants" ("stage", "kind", "image", "user_id", "shelf_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["stage", "pot"], ["kind", "brown"], ["image", "potbrown.png"], ["user_id", 9], ["shelf_id", 10]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 1.2ms | Allocations: 3264)
+
+
+Started GET "/users/9" for ::1 at 2020-01-17 01:38:51 -0500
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/plants_controller.rb:13:in `create'
+Completed 201 Created in 14ms (Views: 1.9ms | ActiveRecord: 4.2ms | Allocations: 6068)
+
+
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (1.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 1.8ms | Allocations: 1767)
+
+
+Started GET "/users" for ::1 at 2020-01-17 08:52:28 -0500
+Started GET "/plants" for ::1 at 2020-01-17 08:52:28 -0500
+Processing by PlantsController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mPlant Load (0.9ms)[0m  [1m[34mSELECT "plants".* FROM "plants"[0m
+  ↳ app/controllers/plants_controller.rb:3:in `index'
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.9ms | Allocations: 4603)
+
+
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3:in `index'
+Completed 200 OK in 7ms (Views: 2.8ms | ActiveRecord: 4.3ms | Allocations: 5985)
+
+
+Started GET "/users/1" for ::1 at 2020-01-17 08:52:29 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 7ms (Views: 2.7ms | ActiveRecord: 2.1ms | Allocations: 2224)
+
+
+Started GET "/users/1" for ::1 at 2020-01-17 08:55:01 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (6.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 10ms (Views: 1.9ms | ActiveRecord: 6.9ms | Allocations: 2180)
+
+
+Started GET "/users" for ::1 at 2020-01-17 09:03:28 -0500
+Started GET "/plants" for ::1 at 2020-01-17 09:03:28 -0500
+Processing by PlantsController#index as HTML
+  [1m[36mPlant Load (1.9ms)[0m  [1m[34mSELECT "plants".* FROM "plants"[0m
+  ↳ app/controllers/plants_controller.rb:3:in `index'
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 1.9ms | Allocations: 4645)
+
+
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (8.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3:in `index'
+Completed 200 OK in 11ms (Views: 2.9ms | ActiveRecord: 8.1ms | Allocations: 1378)
+
+
+Started GET "/users/2" for ::1 at 2020-01-17 09:03:29 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (1.0ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 13ms (Views: 6.4ms | ActiveRecord: 3.8ms | Allocations: 1915)
+
+
+Started PUT "/plants/13" for ::1 at 2020-01-17 09:05:35 -0500
+Processing by PlantsController#update as HTML
+  Parameters: {"id"=>"13", "stage"=>"grow", "kind"=>"red_daisy", "image"=>"redgrowth.png", "user_id"=>2, "shelf_id"=>6, "plant"=>{"id"=>"13", "stage"=>"grow", "kind"=>"red_daisy", "image"=>"redgrowth.png", "user_id"=>2, "shelf_id"=>6}}
+  [1m[36mPlant Load (0.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:21:in `update'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mPlant Update (0.4ms)[0m  [1m[33mUPDATE "plants" SET "stage" = $1, "kind" = $2, "image" = $3 WHERE "plants"."id" = $4[0m  [["stage", "grow"], ["kind", "red_daisy"], ["image", "redgrowth.png"], ["id", 13]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 4.0ms | Allocations: 4086)
+
+
+Started GET "/users/2" for ::1 at 2020-01-17 09:05:35 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.6ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.9ms | Allocations: 1871)
+
+
+Started PUT "/plants/13" for ::1 at 2020-01-17 09:05:37 -0500
+Processing by PlantsController#update as HTML
+  Parameters: {"id"=>"13", "stage"=>"single", "kind"=>"red_daisy", "image"=>"reddaisy.png", "user_id"=>2, "shelf_id"=>6, "plant"=>{"id"=>"13", "stage"=>"single", "kind"=>"red_daisy", "image"=>"reddaisy.png", "user_id"=>2, "shelf_id"=>6}}
+  [1m[36mPlant Load (0.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:21:in `update'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mPlant Update (0.4ms)[0m  [1m[33mUPDATE "plants" SET "stage" = $1, "image" = $2 WHERE "plants"."id" = $3[0m  [["stage", "single"], ["image", "reddaisy.png"], ["id", 13]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+Completed 200 OK in 19ms (Views: 0.3ms | ActiveRecord: 3.1ms | Allocations: 4071)
+
+
+Started GET "/users/2" for ::1 at 2020-01-17 09:05:37 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.7ms | Allocations: 1871)
+
+
+Started PUT "/plants/13" for ::1 at 2020-01-17 09:05:40 -0500
+Processing by PlantsController#update as HTML
+  Parameters: {"id"=>"13", "stage"=>"full", "kind"=>"red_daisy", "image"=>"reddaisies.png", "user_id"=>2, "shelf_id"=>6, "plant"=>{"id"=>"13", "stage"=>"full", "kind"=>"red_daisy", "image"=>"reddaisies.png", "user_id"=>2, "shelf_id"=>6}}
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:21:in `update'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[36mPlant Update (0.3ms)[0m  [1m[33mUPDATE "plants" SET "stage" = $1, "image" = $2 WHERE "plants"."id" = $3[0m  [["stage", "full"], ["image", "reddaisies.png"], ["id", 13]]
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/plants_controller.rb:22:in `update'
+Completed 200 OK in 12ms (Views: 0.4ms | ActiveRecord: 2.9ms | Allocations: 4068)
+
+
+Started GET "/users/2" for ::1 at 2020-01-17 09:05:40 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.8ms | Allocations: 1871)
+
+
+Started GET "/users" for ::1 at 2020-01-17 09:25:40 -0500
+Started GET "/plants" for ::1 at 2020-01-17 09:25:40 -0500
+Processing by PlantsController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mPlant Load (2.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants"[0m
+  ↳ app/controllers/plants_controller.rb:3:in `index'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3:in `index'
+Completed 200 OK in 8ms (Views: 5.0ms | ActiveRecord: 2.4ms | Allocations: 5133)
+
+
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 1.1ms | Allocations: 5810)
+
+
+Started GET "/users" for ::1 at 2020-01-17 09:25:50 -0500
+Started GET "/plants" for ::1 at 2020-01-17 09:25:50 -0500
+Processing by PlantsController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mPlant Load (1.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants"[0m
+  ↳ app/controllers/plants_controller.rb:3:in `index'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 1.4ms | Allocations: 4942)
+
+
+  ↳ app/controllers/users_controller.rb:3:in `index'
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 1.1ms | Allocations: 5912)
+
+
+Started GET "/users/1" for ::1 at 2020-01-17 09:26:13 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 6ms (Views: 3.1ms | ActiveRecord: 1.1ms | Allocations: 2209)
+
+
+Started GET "/plants" for ::1 at 2020-01-17 09:26:25 -0500
+Started GET "/users" for ::1 at 2020-01-17 09:26:25 -0500
+Processing by UsersController#index as HTML
+Processing by PlantsController#index as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3:in `index'
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 2.3ms | Allocations: 1501)
+
+
+  [1m[36mPlant Load (2.0ms)[0m  [1m[34mSELECT "plants".* FROM "plants"[0m
+  ↳ app/controllers/plants_controller.rb:3:in `index'
+Completed 200 OK in 12ms (Views: 9.1ms | ActiveRecord: 2.0ms | Allocations: 5897)
+
+
+Started GET "/users" for ::1 at 2020-01-17 09:26:59 -0500
+Started GET "/plants" for ::1 at 2020-01-17 09:26:59 -0500
+Processing by PlantsController#index as HTML
+  [1m[36mPlant Load (0.5ms)[0m  [1m[34mSELECT "plants".* FROM "plants"[0m
+  ↳ app/controllers/plants_controller.rb:3:in `index'
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.5ms | Allocations: 4442)
+
+
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3:in `index'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.5ms | Allocations: 1340)
+
+
+Started GET "/plants" for ::1 at 2020-01-17 09:27:11 -0500
+Started GET "/users" for ::1 at 2020-01-17 09:27:11 -0500
+Processing by PlantsController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mPlant Load (3.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants"[0m
+  ↳ app/controllers/plants_controller.rb:3:in `index'
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3:in `index'
+Completed 200 OK in 13ms (Views: 9.7ms | ActiveRecord: 3.3ms | Allocations: 4936)
+
+
+Completed 200 OK in 13ms (Views: 10.0ms | ActiveRecord: 2.8ms | Allocations: 5722)
+
+
+Started GET "/users/1" for ::1 at 2020-01-17 09:27:12 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (0.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 6ms (Views: 3.3ms | ActiveRecord: 1.1ms | Allocations: 2209)
+
+
+Started GET "/users" for ::1 at 2020-01-17 09:30:40 -0500
+Started GET "/plants" for ::1 at 2020-01-17 09:30:40 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3:in `index'
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 2.5ms | Allocations: 1340)
+
+
+Processing by PlantsController#index as HTML
+  [1m[36mPlant Load (0.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants"[0m
+  ↳ app/controllers/plants_controller.rb:3:in `index'
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.4ms | Allocations: 4445)
+
+
+Started GET "/users/1" for ::1 at 2020-01-17 09:30:43 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (63.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPlant Load (7.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 75ms (Views: 3.0ms | ActiveRecord: 70.3ms | Allocations: 2180)
+
+
