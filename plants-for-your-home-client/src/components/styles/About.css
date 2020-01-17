@@ -1,0 +1,18 @@
+.about-container {
+    display: flex;
+}
+
+.about-container .main {
+    display: flex;
+    flex-direction: column;
+    padding: 70px;
+    width: 100%;
+}
+
+.about-container .main h1 {
+    font-size: 70px;
+}
+
+.about-container .main p {
+    font-size: 30px;
+}

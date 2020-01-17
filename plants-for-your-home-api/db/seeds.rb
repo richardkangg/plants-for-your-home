@@ -8,4 +8,4 @@
 
 User.create(name: "Bruno")
 
-Plant.create(stage: "pot", kind: "red", image: "test.png", user_id: 2)
+Plant.create(stage: "pot", kind: "red", image: "potred.png", shelf_id: 5, user_id: 2)

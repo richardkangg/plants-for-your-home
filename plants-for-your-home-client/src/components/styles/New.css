@@ -1,0 +1,11 @@
+.new-container {
+    display: flex;
+}
+
+.new-container .addForm {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}

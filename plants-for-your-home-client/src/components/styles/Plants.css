@@ -1,0 +1,163 @@
+.plants-container {
+    display: flex;
+}
+
+.plants {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+.plants .top {
+    display: flex;
+    flex-direction: row;
+}
+
+.plants .plantImage {
+    width: 100px;
+    z-index: 50;
+    margin-top: 60%;
+}
+
+.plants .top {
+    display: flex;
+    flex-direction: row;
+}
+
+.plants .middle {
+    display: flex;
+    flex-direction: row;
+}
+
+.plants .bottom {
+    display: flex;
+    flex-direction: row;
+}
+
+.plants .each {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.plants .top .plant {
+    z-index: 30;
+}
+
+.plants .middle .plant {
+    z-index: 80;
+}
+
+.plants .bottom .plant {
+    z-index: 80;
+}
+
+.plants .plant {
+    width: 75px;
+    position: absolute;
+}
+
+.plants .plant:active {
+    /* box-shadow: 0px 10px 5px white; */
+    background-color: rgba(250,250,250,.2);
+    border-radius: 25px;
+  }
+
+.plants h2 {
+    color: #235732;
+    margin-left: 200px;
+}
+
+.plants-container button {
+    width: 50px;
+}
+
+.plants-container .sideBar .buttons .icon {
+    display: flex;
+    flex-direction: row;
+}
+
+.plants-container .sideBar .buttons img {
+    width: 50px;
+    padding: 5px;
+}
+
+.plants-container .sideBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 100vh;
+    background-color: rgba(136, 195, 153, .5);
+}
+
+.plants-container .sideBar h1 {
+    color: #235732;
+    text-align: center;
+    width: 200px;
+    margin-bottom: 0;
+}
+
+.plants-container .sideBar .x{
+    color: white;
+    width: 50px;
+}
+
+.plants-container .sideBar .open {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 40px;
+    align-items: center;
+}
+
+.plants-container .sideBar .open h4 {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.plants-container .sideBar .buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.plants-container .sideBar button {
+    width: 150px;
+    margin: 10px;
+    font-weight: bold;
+    font-size: 30px;
+    border-radius: 15px;
+}
+
+.plants-container .instructions {
+    color: white;
+    font-size: 35px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 500px) {
+    .plants-container {
+        flex-direction: column;
+    }
+    .plants-container .sideBar {
+        height: 40vh;
+        width: 100vw;
+    }
+
+    .plants-container .sideBar h1 {
+        width: 100vw;
+    }
+
+    .plants-container .instructions {
+        font-size: 25px;
+        margin: 0 20px 0 20px;
+    }
+    .plants {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        width: 80vw;
+    }
+  }
